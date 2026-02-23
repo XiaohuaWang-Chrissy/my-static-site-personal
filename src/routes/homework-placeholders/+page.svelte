@@ -113,10 +113,10 @@
     <p class="component-desc">Side-by-side image comparison with hover zoom effect and italic captions.</p>
 
     <ProjectDiptych
-      imageOne="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80"
-      captionOne="Placeholder image one — urban cityscape"
-      imageTwo="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80"
-      captionTwo="Placeholder image two — city skyline"
+      imageOne="{base}/MEME3.jpg"
+      captionOne="this is a meme"
+      imageTwo="{base}/MEME4.jpg"
+      captionTwo="I know you know this is a placeholder"
     />
   </div>
 </section>
