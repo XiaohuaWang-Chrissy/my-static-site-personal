@@ -102,7 +102,7 @@
     <VideoEmbed
       videoId="dQw4w9WgXcQ"
       title="Placeholder Video"
-      caption="This is a placeholder caption for the VideoEmbed component. It embeds a YouTube video by ID."
+      caption="✨ listening ✨ to this music ✨ while grading my homework ✨"
     />
   </div>
 
