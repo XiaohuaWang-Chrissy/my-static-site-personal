@@ -28,8 +28,8 @@
     border-left: 6px solid;
     padding: 20px;
     margin: 20px 0;
-    max-width: 400px;
-    font-family: 'Georgia', serif;
+    max-width: 100%;
+    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
   }
   .metric {
     font-size: 2.5rem;

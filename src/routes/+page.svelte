@@ -43,6 +43,8 @@
   <h2 class="portfolio-text">PORTFOLIO</h2>
   <p class="subtitle">Data Journalist</p>
 
+  <a href="{base}/homework-placeholders" class="hw-btn">📋 HOMEWORK PLACEHOLDERS</a>
+
 </main>
 
 <style>
@@ -184,6 +186,26 @@
     color: #555;
     font-weight: 300;
     margin-top: 0.5rem;
+  }
+
+  /* Homework 按钮 */
+  .hw-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 10px 28px;
+    background-color: #f0e6d3;
+    color: #7a5c3a;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .hw-btn:hover {
+    background-color: #e4d5bc;
+    transform: translateY(-2px);
   }
 
   /* 手机适配 */

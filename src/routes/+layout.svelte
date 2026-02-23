@@ -27,6 +27,7 @@
       <a href="{base}/writing">Writing</a>
       <a href="{base}/data-journalism">Data Journalism</a>
       <a href="{base}/about">About</a>
+      <a href="{base}/homework-placeholders" class="hw-link">Homework</a>
     </div>
   </nav>
 {/if}
@@ -134,6 +135,11 @@
 
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  .hw-link {
+    color: #c4a776 !important;
+    font-style: italic;
   }
 
   .content-wrapper {
