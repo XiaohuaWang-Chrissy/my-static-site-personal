@@ -1,3 +1,7 @@
+<script>
+  import { base } from '$app/paths';
+</script>
+
 <svelte:head>
   <title>About | Chrissy Wang Portfolio</title>
 </svelte:head>
@@ -18,14 +22,14 @@
       <div class="about-links">
         <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
         <span> • </span>
-        <a href="/" rel="noopener">Portfolio</a>
+        <a href="{base}/" rel="noopener">Portfolio</a>
       </div>
 
       <p class="about-email">xiaohuaw765@gmail.com</p>
     </div>
 
     <div class="about-photo">
-      <img src="/IMG_1344.JPG" alt="Chrissy Wang working" />
+      <img src="{base}/IMG_1344.JPG" alt="Chrissy Wang working" />
     </div>
   </div>
 </section>

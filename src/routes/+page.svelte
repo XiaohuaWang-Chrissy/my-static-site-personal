@@ -1,3 +1,7 @@
+<script>
+  import { base } from '$app/paths';
+</script>
+
 <svelte:head>
   <title>Home | Chrissy Wang Portfolio</title>
 </svelte:head>
@@ -9,14 +13,14 @@
   <div class="hero-grid">
     <!-- 左侧按钮列 -->
     <div class="nav-col left-col">
-      <a href="/" class="nav-block grey-dark">HOME</a>
-      <a href="/writing" class="nav-block grey-light">WRITING</a>
+      <a href="{base}/" class="nav-block grey-dark">HOME</a>
+      <a href="{base}/writing" class="nav-block grey-light">WRITING</a>
     </div>
 
     <!-- 中间照片 -->
     <div class="photo-col">
       <img 
-        src="/Chrissy_photo.JPG" 
+        src="{base}/Chrissy_photo.JPG" 
         alt="Chrissy Wang holding a camera" 
         class="hero-photo"
       />
@@ -25,14 +29,14 @@
     <!-- 右侧按钮列 -->
     <div class="nav-col right-col">
       <div class="nav-dropdown">
-        <a href="/photography" class="nav-block brown-light">VISUAL ARTS</a>
+        <a href="{base}/photography" class="nav-block brown-light">VISUAL ARTS</a>
         <div class="nav-dropdown-content">
-          <a href="/photography">Photography</a>
-          <a href="/documentary">Documentary</a>
-          <a href="/animation">Animation</a>
+          <a href="{base}/photography">Photography</a>
+          <a href="{base}/documentary">Documentary</a>
+          <a href="{base}/animation">Animation</a>
         </div>
       </div>
-      <a href="/data-journalism" class="nav-block brown-dark">DATA WORK</a>
+      <a href="{base}/data-journalism" class="nav-block brown-dark">DATA WORK</a>
     </div>
   </div>
 

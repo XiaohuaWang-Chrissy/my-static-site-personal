@@ -1,29 +1,32 @@
 <script>
   import { page } from '$app/stores';
+  import { base } from '$app/paths';
+
+  let isHome = $derived($page.url.pathname === base + '/' || $page.url.pathname === base || $page.url.pathname === '/');
 </script>
 
-{#if $page.url.pathname === '/'}
+{#if isHome}
   <!-- 主页只显示简洁的品牌名 -->
   <nav class="portfolio-nav home-nav">
-    <a href="/" class="nav-brand">Chrissy Wang 小花</a>
+    <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
   </nav>
 {:else}
   <!-- 其他页面显示完整导航 -->
   <nav class="portfolio-nav">
-    <a href="/" class="nav-brand">Chrissy Wang 小花</a>
+    <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
     <div class="nav-links">
-      <a href="/">Home</a>
+      <a href="{base}/">Home</a>
       <div class="dropdown">
         <button class="dropbtn">Visual Arts ▾</button>
         <div class="dropdown-content">
-          <a href="/photography">Photography</a>
-          <a href="/documentary">Documentary</a>
-          <a href="/animation">Animation</a>
+          <a href="{base}/photography">Photography</a>
+          <a href="{base}/documentary">Documentary</a>
+          <a href="{base}/animation">Animation</a>
         </div>
       </div>
-      <a href="/writing">Writing</a>
-      <a href="/data-journalism">Data Journalism</a>
-      <a href="/about">About</a>
+      <a href="{base}/writing">Writing</a>
+      <a href="{base}/data-journalism">Data Journalism</a>
+      <a href="{base}/about">About</a>
     </div>
   </nav>
 {/if}
