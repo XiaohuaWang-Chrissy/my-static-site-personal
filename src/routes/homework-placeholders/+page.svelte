@@ -24,8 +24,8 @@
 
     <PreviewCard
       href="{base}/homework-placeholders"
-      imageSrc="https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=800&q=80"
-      imageAlt="Placeholder newspaper image"
+      imageSrc="{base}/Meme1.jpg"
+      imageAlt="Meme placeholder image"
       overlayText="View Project →"
       label="PLACEHOLDER CATEGORY"
       title="Sample Project Title Goes Here"
@@ -86,10 +86,10 @@
     <p class="component-desc">Journalist bio card with avatar, name, title, bio text, and social links.</p>
 
     <JournalistBio
-      name="Jane Doe"
+      name="CAT123"
       title="Senior Data Reporter"
       bio="A placeholder bio demonstrating the JournalistBio component. This journalist covers economics, housing policy, and urban development with a focus on data-driven storytelling."
-      avatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+      avatarUrl="{base}/MEME2.jpg"
     />
   </div>
 
