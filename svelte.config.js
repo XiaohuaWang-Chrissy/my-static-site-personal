@@ -30,8 +30,7 @@ const config = {
     // The base path is set via environment variable during build
     // This is configured automatically in .github/workflows/deploy.yml
     // It's needed because GitHub Pages serves from a subdirectory
-    prerender: {
-      default: true, // Enable global pre-rendering
+prerender: {
       handleMissingId: 'warn', // 导航栏锚点链接暂时没有对应的 id，先警告不报错
     },
     paths: {
