@@ -1,0 +1,3 @@
+import"../chunks/CRmzhUOj.js";import"../chunks/DcUUW7Tl.js";import{e,$ as r}from"../chunks/C2BQRtOC.js";import{h as a}from"../chunks/C3wWw9ii.js";import{D as t}from"../chunks/DpXnbIci.js";function u(o){a("1bahbpc",n=>{e(()=>{r.title="Home, Burma | Chrissy Wang Portfolio"})}),t(o,{title:"Home, Burma",subtitle:"",date:"February 2025",authors:"Chrissy Wang, Jing Chen",location:"North Carolina",videoUrl:"https://www.youtube.com/embed/QRJinFZrSRM",description:`What does home mean?
+On a small farm in North Carolina, Karen refugees from Burma rebuild their roots — one crop, one memory at a time.
+In collaboration with UCA Waves. Funded by Blue Cross and Blue Shield of North Carolina.`})}export{u as component};
