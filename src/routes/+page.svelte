@@ -8,7 +8,7 @@
 
 <main class="home-container">
   
-  <h1 class="main-title">Chrissy Wang</h1>
+  <a href="{base}/about" class="about-link"><h1 class="main-title">Chrissy Wang</h1></a>
 
   <div class="hero-grid">
     <!-- 左侧按钮列 -->
@@ -33,17 +33,15 @@
         <div class="nav-dropdown-content">
           <a href="{base}/photography">Photography</a>
           <a href="{base}/documentary">Documentary</a>
-          <a href="{base}/animation">Animation</a>
+          <a href="{base}/animation">Motion Graphics</a>
         </div>
       </div>
       <a href="{base}/data-journalism" class="nav-block brown-dark">DATA WORK</a>
     </div>
   </div>
 
-  <h2 class="portfolio-text">PORTFOLIO</h2>
-  <p class="subtitle">Data Journalist</p>
-
-  <a href="{base}/homework-placeholders" class="hw-btn">📋 HOMEWORK PLACEHOLDERS</a>
+  <a href="{base}/about" class="about-link"><h2 class="portfolio-text">PORTFOLIO</h2></a>
+  <a href="{base}/about" class="about-link"><p class="subtitle">Data Journalist · Documentary Producer · Motion Graphics Designer</p></a>
 
 </main>
 
@@ -188,24 +186,14 @@
     margin-top: 0.5rem;
   }
 
-  /* Homework 按钮 */
-  .hw-btn {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 10px 28px;
-    background-color: #f0e6d3;
-    color: #7a5c3a;
+  .about-link {
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    color: inherit;
   }
 
-  .hw-btn:hover {
-    background-color: #e4d5bc;
-    transform: translateY(-2px);
+  .about-link:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
   }
 
   /* 手机适配 */

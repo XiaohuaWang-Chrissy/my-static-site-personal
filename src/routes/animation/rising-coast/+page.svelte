@@ -1,0 +1,239 @@
+<script>
+  import { base } from '$app/paths';
+</script>
+
+<svelte:head>
+  <title>Rising Coast, Rising Cost | Chrissy Wang Portfolio</title>
+</svelte:head>
+
+<article class="mg-project">
+  <div class="video-hero">
+    <iframe
+      src="https://www.youtube.com/embed/3DZzJCx1vNk"
+      title="Rising Coast, Rising Cost"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <header class="project-header">
+    <span class="project-label">PERSONAL PROJECT</span>
+    <h1 class="project-title">Rising Coast, Rising Cost</h1>
+    <p class="project-subtitle">Created at the Visual Discovery 2024 Conference in Miami.</p>
+    <div class="project-divider"></div>
+  </header>
+
+  <div class="project-meta">
+    <div class="meta-item">
+      <span class="meta-label">Event</span>
+      <span class="meta-value">Visual Discovery 2024</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Location</span>
+      <span class="meta-value">Miami</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Date</span>
+      <span class="meta-value">June 2024</span>
+    </div>
+  </div>
+
+  <div class="project-credits">
+    <div class="credit-block highlight">
+      <h3 class="credit-heading">Animation</h3>
+      <p class="credit-names">Chrissy Wang</p>
+    </div>
+    <div class="credit-block highlight">
+      <h3 class="credit-heading">Animation Design</h3>
+      <p class="credit-names">Elian <span class="credit-origin">(Germany)</span></p>
+    </div>
+  </div>
+
+  <div class="team-photo">
+    <img src="{base}/VDC%20Miami.JPG" alt="Visual Discovery 2024 Conference team in Miami" />
+    <p class="photo-caption">The team at Visual Discovery 2024 Conference, Miami</p>
+  </div>
+</article>
+
+<style>
+  .mg-project {
+    max-width: 960px;
+    width: 90%;
+    margin: 2rem auto 4rem;
+    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+  }
+
+  .video-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    margin-bottom: 2.5rem;
+  }
+
+  .video-hero iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .project-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .project-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #c4a776;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-title {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #222;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .project-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #666;
+    margin: 1rem auto 0;
+    max-width: 640px;
+    font-family: var(--font-serif, Georgia, serif);
+  }
+
+  .project-divider {
+    width: 50px;
+    height: 1px;
+    background: #c4a776;
+    margin: 1.5rem auto 0;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 2.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .meta-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+
+  .meta-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #444;
+  }
+
+  .project-credits {
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .credit-block {
+    flex: 1;
+    text-align: center;
+    padding: 1.5rem 1.5rem;
+    border-radius: 6px;
+  }
+
+  .credit-block.highlight {
+    background: #faf8f5;
+    border: 1px solid #ebe6dd;
+  }
+
+  .credit-heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #c4a776;
+    margin: 0 0 0.5rem;
+  }
+
+  .credit-names {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .credit-origin {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #999;
+  }
+
+  .team-photo {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .team-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .photo-caption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .mg-project {
+      width: 95%;
+      margin: 1rem auto 3rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+    }
+
+    .project-meta {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .project-credits {
+      flex-direction: column;
+    }
+  }
+</style>

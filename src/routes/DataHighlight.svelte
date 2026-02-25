@@ -2,10 +2,10 @@
   let {
     metric = "+3.2%",
     description = "U.S. Consumer Spending Growth in Q4",
-    trend = "up" // 可以是 "up", "down", 或 "neutral"
+    trend = "up" 
   } = $props();
 
-  // Svelte 5 用 $derived 替代 $:
+
   let trendColor = $derived(
     trend === 'up' ? '#137333' :
     trend === 'down' ? '#d93025' :

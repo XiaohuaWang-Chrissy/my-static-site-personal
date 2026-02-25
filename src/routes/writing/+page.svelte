@@ -23,6 +23,19 @@
     description="Six and a half years after a candle fire ignited One Sunset Park Condominium in Sunset Park, Brooklyn, homeowners found themselves trapped in a rare legal dispute due to gaps within the insurance plan. An investigative story with data visualizations exploring the intersection of insurance gaps, tenant rights, and housing policy."
     byline="Reporting, data analysis, photography and web design by Chrissy Wang"
   />
+
+  <PreviewCard
+    href="{base}/writing/nyc-marathon"
+    imageSrc="{base}/NYC_marathon.jpg"
+    imageAlt="New York City Marathon"
+    overlayText="Read Story →"
+    label="WRITING"
+    title="Every Mile Counts: Behind NYC Marathon's Precision"
+    subtitle="Accurate timing is crucial — especially in an event this large"
+    date="November 2025"
+    description="Richard Blake III has timed the NYC Marathon at the five-mile mark for eight years. This story follows the people behind the clocks — from the split-course timing stations in Sunset Park to the cheering crowds at Central Park."
+    byline="By Chrissy Wang"
+  />
 </section>
 
 <style>
@@ -40,6 +53,10 @@
     letter-spacing: 3px;
     color: #999;
     margin-bottom: 2.5rem;
+  }
+
+  .listing-page :global(.project-card + .project-card) {
+    margin-top: 3rem;
   }
 
   @media (max-width: 768px) {
