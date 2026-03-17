@@ -37,8 +37,11 @@
     <!-- 中间照片 -->
     <div class="photo-col">
       <div class="photo-wrapper"
+        role="button"
+        tabindex="0"
         on:mouseenter={handleMouseEnter}
-        on:mouseleave={handleMouseLeave}>
+        on:mouseleave={handleMouseLeave}
+        on:keydown={(e) => e.key === 'Enter' && handleMouseEnter()}>
         <img 
           src="{base}/Chrissy_photo.JPG" 
           alt="Chrissy Wang holding a camera" 
@@ -137,11 +140,6 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
   }
 
-  /* 左侧灰色系 */
-  .grey-dark {
-    background-color: #8e8e8e;
-  }
-
   .grey-light {
     background-color: #b0b5b9;
   }
@@ -149,10 +147,6 @@
   /* 右侧棕色系 */
   .brown-light {
     background-color: #c4a776;
-  }
-
-  .brown-dark {
-    background-color: #7a5c3a;
   }
 
   /* VISUAL ARTS 下拉菜单 */

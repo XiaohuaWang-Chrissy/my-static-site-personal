@@ -16,39 +16,28 @@
       <img src="{base}/IMG_1344.JPG" alt="Chrissy Wang" />
     </div>
     <div class="hero-text">
-      <p class="hero-greeting">Hey, I'm</p>
       <h1 class="hero-name">Chrissy Wang</h1>
       <p class="hero-name-cn">汪小花</p>
-      <p class="hero-tagline">
-        I tell stories with <span class="highlight">data</span>,
-        <span class="highlight">cameras</span>, and
-        <span class="highlight">motion</span>.
-      </p>
+      <div class="roles-section hero-roles">
+        <h2 class="section-heading">What I Do</h2>
+        <div class="role-cards simple">
+          <a class="role-link" href="{base}/data-journalism" style="font-size: 0.9rem;">Data Journalist</a>
+          <a class="role-link" href="{base}/documentary" style="font-size: 0.9rem;">Documentary Producer</a>
+          <a class="role-link" href="{base}/animation" style="font-size: 0.9rem;">Motion Graphics Designer</a>
+        </div>
+      </div>
+      <div class="connect-links hero-connect">
+        <a href="https://github.com/XiaohuaWang-Chrissy" target="_blank" rel="noopener" class="connect-btn">
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/xiaohuawang/" target="_blank" rel="noopener" class="connect-btn">
+          LinkedIn
+        </a>
+        <button class="connect-btn email-btn" onclick={() => showEmail = !showEmail}>
+          {showEmail ? 'xiaohuaw765@gmail.com' : 'Reveal Email'}
+        </button>
+      </div>
     </div>
-  </div>
-
-
-  <!-- ══ WHAT I DO (simple links) ══ -->
-  <div class="roles-section">
-    <h2 class="section-heading">What I Do</h2>
-    <div class="role-cards simple">
-      <a class="role-link" href="{base}/data-journalism" style="font-size: 0.9rem;">Data Journalist</a>
-      <a class="role-link" href="{base}/documentary" style="font-size: 0.9rem;">Documentary Producer</a>
-      <a class="role-link" href="{base}/animation" style="font-size: 0.9rem;">Motion Graphics Designer</a>
-    </div>
-  </div>
-
-  <!-- ══ CONNECT LINKS (moved to bottom) ══ -->
-  <div class="connect-links hero-connect">
-    <a href="https://github.com/XiaohuaWang-Chrissy" target="_blank" rel="noopener" class="connect-btn">
-      GitHub
-    </a>
-    <a href="https://www.linkedin.com/in/xiaohuawang/" target="_blank" rel="noopener" class="connect-btn">
-      LinkedIn
-    </a>
-    <button class="connect-btn email-btn" onclick={() => showEmail = !showEmail}>
-      {showEmail ? 'xiaohuaw765@gmail.com' : 'Reveal Email'}
-    </button>
   </div>
 
 </section>
@@ -56,253 +45,203 @@
 <style>
   /* ── base ── */
   .about-page {
-    max-width: 860px;
+    max-width: 1000px;
     width: 90%;
     margin: 0 auto;
-    padding: 3rem 1.5rem 5rem;
+    padding: 4rem 1.5rem 5rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #222;
+    color: #000;
+    text-align: center;
   }
 
   .section-heading {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 2.5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #c4a776;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
+    color: #000;
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .hero-roles .section-heading {
+    margin-bottom: 1rem;
+    font-size: 1rem;
   }
 
   .section-sub {
-    font-size: 0.9rem;
-    color: #999;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-weight: 300;
   }
 
   /* ── hero ── */
   .hero {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 2rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4rem;
+    text-align: left;
+    margin-bottom: 4rem;
   }
 
   .hero-photo {
-    margin-bottom: 1.5rem;
-    flex: 1;
+    margin-bottom: 0;
+    flex: 0 0 240px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .hero-photo img {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
     object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    transition: transform 0.4s ease;
+    border-radius: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
   }
 
   .hero-photo img:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.02);
   }
 
   .hero-text {
-    text-align: center;
-  }
-
-  .hero-greeting {
-    font-size: 1rem;
-    color: #999;
-    letter-spacing: 1px;
-    margin: 0 0 0.3rem;
+    text-align: left;
+    flex: 1;
   }
 
   .hero-name {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.1;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 0 0.5rem;
+    line-height: 1;
+    letter-spacing: 1px;
   }
 
   .hero-name-cn {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    color: #c4a776;
-    margin: 0.3rem 0 1.2rem;
-  }
-
-  .hero-tagline {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: #444;
-  }
-
-  .highlight {
-    color: #c4a776;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-
-  .highlight:hover {
-    color: #7a5c3a;
-  }
-
-  .connect-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    color: #999;
+    margin: 0.5rem 0 2rem;
+    letter-spacing: 1px;
   }
 
   /* ── role cards ── */
   .roles-section {
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .hero-roles {
     margin-bottom: 2rem;
-    text-align: center;
   }
 
   .role-cards.simple {
     display: flex;
-    gap: 1.2rem;
-    margin: 1.5rem 0 2.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    justify-content: flex-start;
   }
+
   .role-link {
     display: inline-block;
-    padding: 1.1rem 2.2rem;
-    background: #faf8f5;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 0;
+    font-size: 1rem;
     font-weight: 600;
-    color: #7a5c3a;
+    color: #000;
     text-decoration: none;
-    letter-spacing: 1px;
-    transition: all 0.2s;
+    letter-spacing: 1.5px;
+    transition: all 0.2s ease;
   }
+
   .role-link:hover {
-    background: #c4a776;
-    color: #fff;
-    border-color: #c4a776;
-    transform: translateY(-2px) scale(1.04);
-    box-shadow: 0 4px 16px rgba(196, 167, 118, 0.13);
+    background: #e8e8e8;
+    color: #000;
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
   }
 
   .role-detail {
-    margin-top: 1.2rem;
-    padding: 1.2rem 1.5rem;
-    background: #faf8f5;
-    border-left: 4px solid var(--accent);
-    border-radius: 0 8px 8px 0;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border-left: none;
+    border-radius: 0;
     font-size: 1rem;
     line-height: 1.7;
     color: #333;
-    animation: slideIn 0.3s ease;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── skills ── */
-  .skills-section {
-    margin-bottom: 4rem;
-  }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem 2.5rem;
-    margin-top: 1rem;
-  }
-
-  .skill-row {
-    cursor: default;
-  }
-
-  .skill-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 0.35rem;
-  }
-
-  .skill-pct {
-    color: #c4a776;
-    font-weight: 600;
-    animation: fadeInPct 0.2s ease;
-  }
-
-  @keyframes fadeInPct {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .skill-track {
-    height: 6px;
-    background: #eee;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #c4a776, #7a5c3a);
-    border-radius: 3px;
-    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .skill-row:hover .skill-fill {
-    filter: brightness(1.1);
+    animation: none;
   }
 
   /* ── connect ── */
   .connect-btn {
     display: inline-block;
-    padding: 0.5rem 1.2rem;
-    border: 1.5px solid #c4a776;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    padding: 0.8rem 1.6rem;
+    border: 2px solid #000;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
     letter-spacing: 1px;
-    color: #7a5c3a;
+    color: #000;
     text-decoration: none;
     background: transparent;
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
   }
 
   .connect-btn:hover {
-    background: #c4a776;
+    background: #000;
     color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(196, 167, 118, 0.3);
+    transform: none;
+    box-shadow: none;
   }
 
   .email-btn {
-    min-width: 180px;
+    min-width: auto;
+  }
+
+  .connect-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+
+  .hero-connect {
+    flex-direction: row;
+    gap: 1rem;
   }
 
   /* ── responsive ── */
   @media (max-width: 768px) {
+    .about-page {
+      padding: 2.5rem 1rem 3rem;
+    }
+
     .hero {
-      flex-direction: column-reverse;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+      margin-bottom: 3rem;
       gap: 2rem;
     }
 
-    .hero-name {
-      font-size: 2.2rem;
+    .hero-photo {
+      flex: 1;
+      margin-bottom: 0;
     }
 
     .hero-photo img {
@@ -310,17 +249,41 @@
       height: 200px;
     }
 
-    .role-cards {
-      flex-direction: column;
+    .hero-text {
+      text-align: center;
+      width: 100%;
     }
 
-    .skills-grid {
-      grid-template-columns: 1fr;
+    .hero-name {
+      font-size: 2.5rem;
+    }
+
+    .roles-section {
+      text-align: center;
+    }
+
+    .role-cards.simple {
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .role-link {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+      background: #f5f5f5;
+    }
+
+    .role-link:hover {
+      background: #e8e8e8;
     }
 
     .connect-links {
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 0;
     }
   }
 </style>
