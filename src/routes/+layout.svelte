@@ -15,7 +15,13 @@
   <nav class="portfolio-nav">
     <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
     <div class="nav-links">
-      <a href="{base}/">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Writing ▾</button>
+        <div class="dropdown-content">
+          <a href="{base}/data-journalism">Data</a>
+          <a href="{base}/writing">Investigative</a>
+        </div>
+      </div>
       <div class="dropdown">
         <button class="dropbtn">Visual Arts ▾</button>
         <div class="dropdown-content">
@@ -24,8 +30,6 @@
           <a href="{base}/animation">Motion Graphics</a>
         </div>
       </div>
-      <a href="{base}/writing">Writing</a>
-      <a href="{base}/data-journalism">Data Journalism</a>
       <a href="{base}/about">About</a>
     </div>
   </nav>
@@ -129,7 +133,7 @@
 
   .dropdown-content a:hover {
     background-color: #f8f9fa;
-    color: #d93025;
+    color: #7a5c3a;
   }
 
   .dropdown:hover .dropdown-content {

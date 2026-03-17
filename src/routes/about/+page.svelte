@@ -1,20 +1,7 @@
 <script>
   import { base } from '$app/paths';
 
-  let funFactIndex = $state(0);
   let showEmail = $state(false);
-  const funFacts = [
-    'My Chinese name is 小花 — it means "little flower." 🌸',
-    'I once timed the NYC Marathon at the five-mile mark in Sunset Park.',
-    'I\'ve documented Hurricane Helene aftermath across three NC towns in one week.',
-    'My first documentary was about a 64-year-old Olympic gymnastics coach.',
-    'I traveled to Miami for a visual storytelling conference and made an animation about rising sea levels.',
-    'I filmed a diamond-cutting story in Buenos Aires — in Spanish.',
-    'I patrol Brooklyn Chinatown at night... for a story, not as a vigilante. 🚔',
-  ];
-  function nextFact() {
-    funFactIndex = (funFactIndex + 1) % funFacts.length;
-  }
 </script>
 
 <svelte:head>
@@ -51,15 +38,6 @@
     </div>
   </div>
 
-  <!-- ══ A LITTLE BIT MORE ABOUT ME (click to cycle) ══ -->
-  <div class="fun-section">
-    <h2 class="section-heading">A Little Bit More About Me</h2>
-    <button class="fun-card" onclick={nextFact}>
-      <span class="fun-text">{funFacts[funFactIndex]}</span>
-      <span class="fun-hint">click for another →</span>
-    </button>
-  </div>
-
   <!-- ══ CONNECT LINKS (moved to bottom) ══ -->
   <div class="connect-links hero-connect">
     <a href="https://github.com/XiaohuaWang-Chrissy" target="_blank" rel="noopener" class="connect-btn">
@@ -67,9 +45,6 @@
     </a>
     <a href="https://www.linkedin.com/in/xiaohuawang/" target="_blank" rel="noopener" class="connect-btn">
       LinkedIn
-    </a>
-    <a href="{base}/" class="connect-btn">
-      Portfolio
     </a>
     <button class="connect-btn email-btn" onclick={() => showEmail = !showEmail}>
       {showEmail ? 'xiaohuaw765@gmail.com' : 'Reveal Email'}
@@ -137,8 +112,7 @@
   }
 
   .hero-text {
-    flex: 1;
-    text-align: left;
+    text-align: center;
   }
 
   .hero-greeting {
@@ -189,13 +163,15 @@
   /* ── role cards ── */
   .roles-section {
     margin-bottom: 2rem;
+    text-align: center;
   }
 
   .role-cards.simple {
     display: flex;
     gap: 1.2rem;
     margin: 1.5rem 0 2.5rem;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .role-link {
     display: inline-block;
@@ -287,49 +263,6 @@
 
   .skill-row:hover .skill-fill {
     filter: brightness(1.1);
-  }
-
-  /* ── fun facts ── */
-  .fun-section {
-    margin-bottom: 4rem;
-  }
-
-  .fun-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-    width: 100%;
-    padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, #faf8f5, #f5f0e8);
-    border: 1px solid #e8e0d4;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-align: left;
-    font-family: inherit;
-  }
-
-  .fun-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(196, 167, 118, 0.15);
-  }
-
-  .fun-card:active {
-    transform: scale(0.99);
-  }
-
-  .fun-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
-    min-height: 1.8em;
-  }
-
-  .fun-hint {
-    font-size: 0.8rem;
-    color: #bbb;
-    letter-spacing: 1px;
   }
 
   /* ── connect ── */

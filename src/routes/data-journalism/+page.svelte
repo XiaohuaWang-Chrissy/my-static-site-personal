@@ -11,6 +11,18 @@
   <h1 class="page-title">DATA JOURNALISM</h1>
 
   <PreviewCard
+    href="{base}/data-journalism/savings-jobs"
+    imageSrc="{base}/piggy bank.png"
+    imageAlt="Piggy bank representing savings"
+    overlayText="Read Article →"
+    label="EMPLOYMENT & RETAIL"
+    title="Americans Are Spending Their Savings. The Jobs Market Isn't Helping."
+    date="March 9, 2026"
+    description="As retail sales slipped and the job market weakened, Americans are draining their savings to cover what their paychecks no longer can."
+    byline="Reporting and data analysis by Chrissy Wang"
+  />
+
+  <PreviewCard
     href="{base}/data-journalism/retail-sales"
     imageSrc="{base}/cover-image.png"
     imageAlt="Retail sales story cover"
@@ -19,6 +31,18 @@
     title="Winter Storms May Deepen Economic Chill After Retail Sales Stagnant in December"
     date="February 10, 2026"
     description="Retail sales growth remained stagnant in December, and economists say the downward trend will probably continue into January. An in-depth data story examining retail decline, labor market cooling, and what it means for Fed policy."
+    byline="Reporting and data analysis by Chrissy Wang"
+  />
+
+  <PreviewCard
+    href="{base}/writing/nyc-marathon"
+    imageSrc="{base}/NYC_marathon.jpg"
+    imageAlt="New York City Marathon"
+    overlayText="Read Article →"
+    label="DATA STORYTELLING"
+    title="Every Mile Counts: Behind NYC Marathon's Precision"
+    date="November 2025"
+    description="Richard Blake III has timed the NYC Marathon at the five-mile mark for eight years. This story follows the people behind the clocks."
     byline="Reporting and data analysis by Chrissy Wang"
   />
 

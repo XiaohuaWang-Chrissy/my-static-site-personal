@@ -1,5 +1,17 @@
 <script>
   import { base } from '$app/paths';
+  
+  let bubbleState = 0; // 0 = 无，1,2,3 = 下次应该显示的气泡
+  let showBubble = false; // 是否显示气泡
+
+  function handleMouseEnter() {
+    bubbleState = bubbleState === 3 ? 1 : bubbleState + 1;
+    showBubble = true;
+  }
+
+  function handleMouseLeave() {
+    showBubble = false;
+  }
 </script>
 
 <svelte:head>
@@ -13,30 +25,53 @@
   <div class="hero-grid">
     <!-- 左侧按钮列 -->
     <div class="nav-col left-col">
-      <a href="{base}/" class="nav-block grey-dark">HOME</a>
-      <a href="{base}/writing" class="nav-block grey-light">WRITING</a>
+      <div class="nav-dropdown">
+        <button class="nav-block grey-light">WRITING</button>
+        <div class="nav-dropdown-content">
+          <a href="{base}/data-journalism">Data</a>
+          <a href="{base}/writing">Investigative</a>
+        </div>
+      </div>
     </div>
 
     <!-- 中间照片 -->
     <div class="photo-col">
-      <img 
-        src="{base}/Chrissy_photo.JPG" 
-        alt="Chrissy Wang holding a camera" 
-        class="hero-photo"
-      />
+      <div class="photo-wrapper"
+        on:mouseenter={handleMouseEnter}
+        on:mouseleave={handleMouseLeave}>
+        <img 
+          src="{base}/Chrissy_photo.JPG" 
+          alt="Chrissy Wang holding a camera" 
+          class="hero-photo"
+        />
+        {#if showBubble && bubbleState === 1}
+          <div class="thought-bubble bubble-top-left">
+            <p>This is the sunset from the 86th floor of the Empire State Building in New York.</p>
+          </div>
+        {/if}
+        {#if showBubble && bubbleState === 2}
+          <div class="thought-bubble bubble-top-right">
+            <p>I captured it with my 70-year-old Rolleiflex 6x6 camera. I used Kodak Portra 800 film.</p>
+          </div>
+        {/if}
+        {#if showBubble && bubbleState === 3}
+          <div class="thought-bubble bubble-bottom-left">
+            <p>What a beautiful day it was, and I hope for many more beautiful days like this.</p>
+          </div>
+        {/if}
+      </div>
     </div>
 
     <!-- 右侧按钮列 -->
     <div class="nav-col right-col">
       <div class="nav-dropdown">
-        <a href="{base}/photography" class="nav-block brown-light">VISUAL ARTS</a>
+        <button class="nav-block brown-light">VISUAL ARTS</button>
         <div class="nav-dropdown-content">
           <a href="{base}/photography">Photography</a>
           <a href="{base}/documentary">Documentary</a>
           <a href="{base}/animation">Motion Graphics</a>
         </div>
       </div>
-      <a href="{base}/data-journalism" class="nav-block brown-dark">DATA WORK</a>
     </div>
   </div>
 
@@ -93,6 +128,8 @@
     font-weight: 600;
     letter-spacing: 2px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
   }
 
   .nav-block:hover {
@@ -134,7 +171,6 @@
     border-radius: 6px;
     z-index: 50;
     overflow: hidden;
-    border: 1px solid #eaeaea;
   }
 
   .nav-dropdown-content a {
@@ -161,12 +197,123 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
+  }
+
+  .photo-wrapper {
+    position: relative;
+    display: inline-block;
   }
 
   .hero-photo {
     width: 300px;
     height: auto;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: block;
+  }
+
+  /* 思考气泡样式 */
+  .thought-bubble {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 25px;
+    padding: 18px 22px;
+    max-width: 280px;
+    width: 280px;
+    box-shadow: none;
+    z-index: 100;
+    animation: bubbleAppear 0.3s ease-out;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  }
+
+  /* 创建卡通云形边缘 */
+  .thought-bubble::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 25px;
+    pointer-events: none;
+  }
+
+  /* 左上方气泡 */
+  .bubble-top-left {
+    top: -120px;
+    left: -280px;
+  }
+
+  .bubble-top-left::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: -18px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 50%;
+  }
+
+  /* 右上方气泡 */
+  .bubble-top-right {
+    top: -120px;
+    right: -280px;
+  }
+
+  .bubble-top-right::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -18px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 50%;
+  }
+
+  /* 左下方气泡 */
+  .bubble-bottom-left {
+    bottom: -120px;
+    left: -280px;
+  }
+
+  .bubble-bottom-left::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -18px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #000;
+    border-radius: 50%;
+  }
+
+  .thought-bubble p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #000;
+    font-weight: 400;
+    position: relative;
+    z-index: 10;
+  }
+
+  @keyframes bubbleAppear {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   /* PORTFOLIO 大字 */
@@ -220,6 +367,65 @@
 
     .hero-photo {
       width: 250px;
+    }
+
+    .photo-wrapper {
+      overflow: visible;
+    }
+
+    .thought-bubble {
+      max-width: 140px;
+      width: 140px;
+      padding: 12px 14px;
+      border: 2px solid #000;
+    }
+
+    .thought-bubble::before {
+      border: 2px solid #000;
+    }
+
+    .thought-bubble p {
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .bubble-top-left {
+      top: -110px;
+      left: -60px;
+    }
+
+    .bubble-top-left::after {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #000;
+      right: -12px;
+      bottom: -8px;
+    }
+
+    .bubble-top-right {
+      top: -110px;
+      right: -60px;
+    }
+
+    .bubble-top-right::after {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #000;
+      left: -12px;
+      bottom: -8px;
+    }
+
+    .bubble-bottom-left {
+      bottom: -110px;
+      left: -60px;
+    }
+
+    .bubble-bottom-left::after {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #000;
+      right: -12px;
+      top: -8px;
     }
 
     .portfolio-text {
