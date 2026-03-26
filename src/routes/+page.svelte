@@ -1,6 +1,7 @@
 <script>
   import { base } from '$app/paths';
-  
+  import WindIntro from '$lib/components/WindIntro.svelte';
+
   let bubbleState = 0; // 0 = 无，1,2,3 = 下次应该显示的气泡
   let showBubble = false; // 是否显示气泡
 
@@ -17,6 +18,8 @@
 <svelte:head>
   <title>Home | Chrissy Wang Portfolio</title>
 </svelte:head>
+
+<WindIntro />
 
 <main class="home-container">
   
@@ -206,33 +209,23 @@
     display: block;
   }
 
-  /* 思考气泡样式 */
+  /* 思考气泡样式 — 毛玻璃柔和风格 */
   .thought-bubble {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #000;
-    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 22px;
     padding: 18px 22px;
     max-width: 280px;
     width: 280px;
-    box-shadow: none;
     z-index: 100;
     animation: bubbleAppear 0.3s ease-out;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-  }
-
-  /* 创建卡通云形边缘 */
-  .thought-bubble::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #000;
-    border-radius: 25px;
-    pointer-events: none;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      0 1px 6px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   /* 左上方气泡 */
@@ -241,16 +234,33 @@
     left: -280px;
   }
 
+  /* 尾部小圆点 — 渐隐效果 */
+  .bubble-top-left::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: -14px;
+    width: 20px;
+    height: 20px;
+    background: rgba(235, 235, 235, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
   .bubble-top-left::after {
     content: '';
     position: absolute;
-    bottom: -15px;
-    right: -18px;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #000;
+    bottom: -28px;
+    right: -26px;
+    width: 12px;
+    height: 12px;
+    background: rgba(230, 230, 230, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   }
 
   /* 右上方气泡 */
@@ -259,16 +269,32 @@
     right: -280px;
   }
 
+  .bubble-top-right::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: -14px;
+    width: 20px;
+    height: 20px;
+    background: rgba(235, 235, 235, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
   .bubble-top-right::after {
     content: '';
     position: absolute;
-    bottom: -15px;
-    left: -18px;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #000;
+    bottom: -28px;
+    left: -26px;
+    width: 12px;
+    height: 12px;
+    background: rgba(230, 230, 230, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   }
 
   /* 左下方气泡 */
@@ -277,36 +303,51 @@
     left: -280px;
   }
 
+  .bubble-bottom-left::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    right: -14px;
+    width: 20px;
+    height: 20px;
+    background: rgba(235, 235, 235, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
   .bubble-bottom-left::after {
     content: '';
     position: absolute;
-    top: -15px;
-    right: -18px;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid #000;
+    top: -28px;
+    right: -26px;
+    width: 12px;
+    height: 12px;
+    background: rgba(230, 230, 230, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   }
 
   .thought-bubble p {
     margin: 0;
     font-size: 0.9rem;
-    line-height: 1.5;
-    color: #000;
+    line-height: 1.6;
+    color: #3a3a3a;
     font-weight: 400;
-    position: relative;
-    z-index: 10;
+    letter-spacing: 0.2px;
   }
 
   @keyframes bubbleAppear {
     from {
       opacity: 0;
-      transform: scale(0.8);
+      transform: scale(0.85) translateY(4px);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
   }
 
@@ -371,11 +412,6 @@
       max-width: 140px;
       width: 140px;
       padding: 12px 14px;
-      border: 2px solid #000;
-    }
-
-    .thought-bubble::before {
-      border: 2px solid #000;
     }
 
     .thought-bubble p {
@@ -388,12 +424,18 @@
       left: -60px;
     }
 
-    .bubble-top-left::after {
-      width: 14px;
-      height: 14px;
-      border: 2px solid #000;
-      right: -12px;
+    .bubble-top-left::before {
+      width: 10px;
+      height: 10px;
+      right: -8px;
       bottom: -8px;
+    }
+
+    .bubble-top-left::after {
+      width: 6px;
+      height: 6px;
+      right: -16px;
+      bottom: -16px;
     }
 
     .bubble-top-right {
@@ -401,12 +443,18 @@
       right: -60px;
     }
 
-    .bubble-top-right::after {
-      width: 14px;
-      height: 14px;
-      border: 2px solid #000;
-      left: -12px;
+    .bubble-top-right::before {
+      width: 10px;
+      height: 10px;
+      left: -8px;
       bottom: -8px;
+    }
+
+    .bubble-top-right::after {
+      width: 6px;
+      height: 6px;
+      left: -16px;
+      bottom: -16px;
     }
 
     .bubble-bottom-left {
@@ -414,12 +462,18 @@
       left: -60px;
     }
 
-    .bubble-bottom-left::after {
-      width: 14px;
-      height: 14px;
-      border: 2px solid #000;
-      right: -12px;
+    .bubble-bottom-left::before {
+      width: 10px;
+      height: 10px;
+      right: -8px;
       top: -8px;
+    }
+
+    .bubble-bottom-left::after {
+      width: 6px;
+      height: 6px;
+      right: -16px;
+      top: -16px;
     }
 
     .portfolio-text {
