@@ -1,6 +1,7 @@
 <script>
   import { base } from '$app/paths';
   import WindIntro from '$lib/components/WindIntro.svelte';
+  import SeasonEffect from '$lib/components/SeasonEffect.svelte';
 
   let bubbleState = 0; // 0 = 无，1,2,3 = 下次应该显示的气泡
   let showBubble = false; // 是否显示气泡
@@ -83,6 +84,8 @@
 
   <a href="{base}/about" class="about-link"><h2 class="portfolio-text">PORTFOLIO</h2></a>
   <a href="{base}/about" class="about-link"><p class="subtitle">Data Journalist · Documentary Producer · Motion Graphics Designer</p></a>
+
+  <SeasonEffect />
 
 </main>
 
