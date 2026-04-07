@@ -27,15 +27,6 @@ The template has been extended into a full personal portfolio with the following
 | `/animation` | Motion graphics and data animation |
 | `/crude-oil` | Interactive crude oil price chart (WTI vs. Brent, 2019–present) |
 
-### Crude Oil Chart (`/crude-oil`)
-
-Built from scratch as a data journalism piece. Features:
-
-- Hand-curated monthly WTI and Brent price data (2019–2026)
-- Annotated event markers (COVID crash, Russia–Ukraine war, Hamas attack, Houthi disruptions, U.S. tariff escalation, Iran war)
-- 1Y / 3Y / 5Y range toggle
-- Hover tooltip with spread calculation
-- Optional live data via [FRED API](https://fred.stlouisfed.org/) (requires `PUBLIC_FRED_KEY` in `.env`)
 
 ## Stack
 
