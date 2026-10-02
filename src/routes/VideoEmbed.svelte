@@ -59,7 +59,7 @@
     margin-top: 12px;
     font-size: 0.95rem;
     color: #666;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     text-align: center;
     font-style: italic;
   }

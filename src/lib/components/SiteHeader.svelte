@@ -95,7 +95,7 @@ SiteHeader.svelte — NYCity News Service Style Header
   .logo-nycity {
     background-color: var(--color-white);
     color: var(--color-accent);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: 800;
     padding: 0.15rem 0.35rem;
@@ -107,7 +107,7 @@ SiteHeader.svelte — NYCity News Service Style Header
 
   .logo-news-service {
     color: var(--color-white);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: 300;
     padding: 0.15rem 0.35rem;
@@ -133,7 +133,7 @@ SiteHeader.svelte — NYCity News Service Style Header
   .nav-link {
     color: var(--color-white);
     text-decoration: none;
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;

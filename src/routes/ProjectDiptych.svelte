@@ -42,7 +42,7 @@
     margin-top: 10px;
     font-size: 0.9rem;
     color: #666;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     text-align: center;
     font-style: italic;
   }

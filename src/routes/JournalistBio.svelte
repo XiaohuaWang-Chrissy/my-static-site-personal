@@ -28,7 +28,7 @@
     background: #fdfdfd;
     border: 1px solid #eaeaea;
     border-radius: 8px;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     max-width: 600px;
   }
   .avatar {

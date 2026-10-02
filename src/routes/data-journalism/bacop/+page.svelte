@@ -120,7 +120,7 @@
     max-width: 780px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
-    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-family: var(--font-serif);
     color: #1a1a1a;
     line-height: 1.8;
   }
@@ -131,7 +131,7 @@
   }
 
   .article-label {
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 3px;
@@ -144,7 +144,7 @@
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: 0.75rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .article-byline {
@@ -173,7 +173,7 @@
   }
 
   blockquote {
-    border-left: 3px solid #c4a776;
+    border-left: 3px solid var(--unc-blue);
     margin: 2rem 0;
     padding: 1rem 1.5rem;
     background: #faf8f5;

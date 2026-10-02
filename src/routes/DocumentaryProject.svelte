@@ -72,7 +72,7 @@
     max-width: 960px;
     width: 90%;
     margin: 2rem auto 4rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     color: #3a3a3a;
   }
 
@@ -124,7 +124,7 @@
     margin: 0;
     color: #222;
     text-transform: uppercase;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .doc-subtitle {
@@ -139,7 +139,7 @@
   .doc-divider {
     width: 50px;
     height: 1px;
-    background: #c4a776;
+    background: var(--cuny-orange);
     margin: 1.5rem auto 0;
   }
 
@@ -189,7 +189,7 @@
     line-height: 1.8;
     color: #666;
     margin: 0 0 0.6rem;
-    font-family: var(--font-serif, Georgia, serif);
+    font-family: var(--font-serif);
     font-style: italic;
   }
 

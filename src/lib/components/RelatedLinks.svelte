@@ -49,7 +49,7 @@ USAGE EXAMPLE:
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: var(--font-size-sm);
     font-weight: 700;
     text-transform: uppercase;

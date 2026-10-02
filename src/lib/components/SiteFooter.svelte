@@ -65,7 +65,7 @@ USAGE EXAMPLE:
   .footer-link {
     color: var(--color-dark);
     text-decoration: none;
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.05em;

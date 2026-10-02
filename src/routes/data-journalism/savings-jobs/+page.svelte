@@ -98,7 +98,7 @@
     width: 90%;
     margin: 0 auto;
     padding: 3rem 1.5rem 4rem;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     color: #333;
     line-height: 1.8;
   }
@@ -113,7 +113,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     margin: 0 0 1rem;
   }
 

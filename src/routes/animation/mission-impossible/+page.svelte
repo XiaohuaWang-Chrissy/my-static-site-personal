@@ -34,7 +34,7 @@
     <div class="credit-block highlight">
       <h3 class="credit-heading">Motion Graphics</h3>
       <p class="credit-names">Chrissy Wang &amp; Christian Baudet</p>
-      <p class="credit-tools">Photoshop · Illustrator · After Effects</p>
+      <p class="credit-tools">Photoshop, Illustrator, After Effects</p>
     </div>
   </div>
 </article>
@@ -44,7 +44,7 @@
     max-width: 960px;
     width: 90%;
     margin: 2rem auto 4rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .video-hero {
@@ -77,7 +77,7 @@
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 2.5px;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     margin-bottom: 0.6rem;
   }
 
@@ -96,13 +96,13 @@
     color: #666;
     margin: 1rem auto 0;
     max-width: 640px;
-    font-family: var(--font-serif, Georgia, serif);
+    font-family: var(--font-serif);
   }
 
   .project-divider {
     width: 50px;
     height: 1px;
-    background: #c4a776;
+    background: var(--cuny-orange);
     margin: 1.5rem auto 0;
   }
 
@@ -159,7 +159,7 @@
     font-weight: 600;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     margin: 0 0 0.5rem;
   }
 

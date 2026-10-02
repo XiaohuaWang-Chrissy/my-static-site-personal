@@ -13,6 +13,27 @@
   <h2 class="section-title">PHOTOJOURNALISM</h2>
 
   <PreviewCard
+    imageSrc="{base}/hbj-latino-learning-center.jpg"
+    imageAlt="Latino Learning Center President and CEO Rodolfo González at a window inside the center"
+    overlayText="View Story →"
+    label="PHOTO STORY"
+    title="Inside the Latino Learning Center, Seeking Funds for $7M Renovations"
+    date="July 17, 2026"
+    description="A tour of a century-old East Downtown Houston nonprofit, largely shut since 2024 after a promised federal grant fell through. The photo story ran alongside that week's Houston Business Journal cover story."
+    byline="Photos by Chrissy Wang · Story by Chrissy Wang and Janet Miranda · Published in Houston Business Journal"
+    links={[
+      {
+        href: 'https://www.bizjournals.com/houston/news/2026/07/17/houston-latino-learning-center-photo-story.html',
+        text: 'View the photo story on HBJ'
+      },
+      {
+        href: `${base}/hbj-latino-learning-center-print.pdf`,
+        text: 'See the print cover (PDF)'
+      }
+    ]}
+  />
+
+  <PreviewCard
     href="{base}/photography/western-nc"
     imageSrc="https://i0.wp.com/mediahub.unc.edu/wp-content/uploads/2024/12/1-scaled.jpg?resize=2048%2C1365&ssl=1"
     imageAlt="Flood damage in Swannanoa, North Carolina"
@@ -20,7 +41,7 @@
     label="PHOTOJOURNALISM"
     title="Picking Up the Pieces in Western North Carolina"
     date="December 2, 2024"
-    description="After Hurricane Helene ravaged Western North Carolina, communities in Swannanoa, Marion, and Saluda face a long road to recovery. A photo story documenting the aftermath — the destruction, the volunteers, and the resilience."
+    description="After Hurricane Helene ravaged Western North Carolina, communities in Swannanoa, Marion, and Saluda face a long road to recovery."
     byline="Photo story by Chrissy Wang · Published on UNC Media Hub"
   />
 
@@ -32,12 +53,9 @@
     label="PHOTOJOURNALISM"
     title="Hurricane Helene Destroys 49-Year-Old Campground"
     date="October 23, 2024"
-    description="Hurricane Helene wiped out Triple C Campground in Marion, N.C. — a family business set to celebrate its 50th anniversary. Pat and Charlie Gowan lost nearly everything but remain connected to the community that has rallied around them."
+    description="Hurricane Helene wiped out Triple C Campground in Marion, N.C. — a family business set to celebrate its 50th anniversary."
     byline="Photo story by Chrissy Wang · Published on UNC Media Hub"
   />
-
-  <h2 class="section-title">FILM PHOTOGRAPHY</h2>
-  <p class="section-placeholder">Coming soon.</p>
 </section>
 
 <style>
@@ -49,7 +67,7 @@
   }
 
   .page-title {
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 3px;
@@ -58,21 +76,14 @@
   }
 
   .section-title {
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 2.5px;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #eee;
-  }
-
-  .section-placeholder {
-    font-size: 1rem;
-    color: #aaa;
-    font-style: italic;
-    margin-bottom: 3rem;
   }
 
   .listing-page :global(.project-card) {

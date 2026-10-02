@@ -41,7 +41,7 @@
     imageSrc="https://i.ytimg.com/vi/3DZzJCx1vNk/maxresdefault.jpg"
     imageAlt="Rising Coast, Rising Cost"
     overlayText="Watch →"
-    label="VISUAL DISCOVERY 2024 · MIAMI"
+    label="VISUAL DISCOVERY 2024, MIAMI"
     title="Rising Coast, Rising Cost"
     subtitle=""
     description="Created at the Visual Discovery 2024 Conference in Miami."
@@ -70,7 +70,7 @@
   }
 
   .page-title {
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 400;
     letter-spacing: 3px;
@@ -83,11 +83,11 @@
   }
 
   .section-title {
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 3px;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     margin: 4rem 0 1.5rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid #e8e8e8;

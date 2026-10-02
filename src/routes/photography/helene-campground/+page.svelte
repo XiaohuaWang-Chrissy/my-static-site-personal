@@ -130,7 +130,7 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .gallery-header {
@@ -309,7 +309,7 @@
     text-align: center;
     margin-top: 1.5rem;
     padding: 0 1rem;
-    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-family: var(--font-serif);
   }
 
   .lightbox-counter {

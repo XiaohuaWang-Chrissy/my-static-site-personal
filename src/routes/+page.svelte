@@ -1,486 +1,373 @@
 <script>
   import { base } from '$app/paths';
-  import WindIntro from '$lib/components/WindIntro.svelte';
-  import SeasonEffect from '$lib/components/SeasonEffect.svelte';
+  import { hbjClips } from '$lib/data/hbjClips.js';
 
-  let bubbleState = 0; // 0 = 无，1,2,3 = 下次应该显示的气泡
-  let showBubble = false; // 是否显示气泡
+  // 首页精选作品：想换哪几个，直接改这个列表
+  const selectedWork = [
+    {
+      href: 'https://www.sunsetpost.org/en/stories/burned-out-condo-stuck-between-insurance-gaps-and-tenant-rights/',
+      external: true,
+      image: `${base}/project-fire-cover.jpg`,
+      label: 'Investigative',
+      title: 'A Burned-Out Sunset Park Condo Is Stuck Between Insurance Gaps and Tenant Rights'
+    },
+    {
+      href: 'https://www.bizjournals.com/houston/news/2026/07/02/world-cup-parking-strategy-mixed-for-businesses.html',
+      external: true,
+      image: `${base}/hbj-world-cup.jpg`,
+      label: 'Business',
+      title: 'World Cup Parking Plan Drives 1.47 Million Visits Downtown, but Not All Businesses Benefit'
+    },
+    {
+      href: 'https://www.bizjournals.com/houston/news/2026/07/17/houston-latino-learning-center-photo-story.html',
+      external: true,
+      image: `${base}/hbj-latino-learning-center.jpg`,
+      label: 'Photo Story',
+      title: 'Inside the Latino Learning Center, Seeking Funds for $7M Renovations'
+    },
+    {
+      href: `${base}/documentary/la-forma-del-diamante`,
+      image: `${base}/documentary-cover.jpg`,
+      label: 'Documentary',
+      title: 'La Forma del Diamante'
+    },
+    {
+      href: `${base}/animation/womens-lacrosse-2025`,
+      image: 'https://i.ytimg.com/vi/SvSYQCwHkP0/maxresdefault.jpg',
+      label: 'Motion Graphics',
+      title: "2025 National Champion Carolina Women's Lacrosse"
+    },
+    {
+      href: `${base}/photography/western-nc`,
+      image: 'https://i0.wp.com/mediahub.unc.edu/wp-content/uploads/2024/12/1-scaled.jpg?resize=2048%2C1365&ssl=1',
+      label: 'Photojournalism',
+      title: 'Picking Up the Pieces in Western North Carolina'
+    }
+  ];
 
-  function handleMouseEnter() {
-    bubbleState = bubbleState === 3 ? 1 : bubbleState + 1;
-    showBubble = true;
-  }
+  // 最新的 3 篇 HBJ 稿子（按日期）
+  const recentClips = [...hbjClips].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
 
-  function handleMouseLeave() {
-    showBubble = false;
-  }
+  const formatDate = (iso) =>
+    new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+    });
+
+  const sections = [
+    { href: `${base}/writing`, label: 'Writing' },
+    { href: `${base}/photography`, label: 'Photography' },
+    { href: `${base}/documentary`, label: 'Documentary' },
+    { href: `${base}/animation`, label: 'Motion Graphics' }
+  ];
 </script>
 
 <svelte:head>
-  <title>Home | Chrissy Wang Portfolio</title>
+  <title>Chrissy Wang | Reporter</title>
 </svelte:head>
 
-<WindIntro />
+<div class="home">
+  <header class="intro">
+    <h1 class="name">Chrissy Wang</h1>
+    <p class="role">Reporter</p>
+    <nav class="intro-links" aria-label="Contact">
+      <a href="{base}/about">About</a>
+      <a href="https://www.linkedin.com/in/xiaohuawang/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://muckrack.com/chrissy-wang/articles" target="_blank" rel="noopener noreferrer">Muck Rack</a>
+    </nav>
+  </header>
 
-<main class="home-container">
-  
-  <a href="{base}/about" class="about-link"><h1 class="main-title">Chrissy Wang</h1></a>
-
-  <div class="hero-grid">
-    <!-- 左侧按钮列 -->
-    <div class="nav-col left-col">
-      <div class="nav-dropdown">
-        <button class="nav-block grey-light">WRITING</button>
-        <div class="nav-dropdown-content">
-          <a href="{base}/data-journalism">Data</a>
-          <a href="{base}/writing">Investigative</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 中间照片 -->
-    <div class="photo-col">
-      <div class="photo-wrapper"
-        role="button"
-        tabindex="0"
-        on:mouseenter={handleMouseEnter}
-        on:mouseleave={handleMouseLeave}
-        on:keydown={(e) => e.key === 'Enter' && handleMouseEnter()}>
-        <img 
-          src="{base}/Chrissy_photo.JPG" 
-          alt="Chrissy Wang holding a camera" 
-          class="hero-photo"
-        />
-        {#if showBubble && bubbleState === 1}
-          <div class="thought-bubble bubble-top-left">
-            <p>This is the sunset from the 86th floor of the Empire State Building in New York.</p>
+  <section class="block">
+    <h2 class="block-heading">Selected Work</h2>
+    <div class="work-grid">
+      {#each selectedWork as work (work.href)}
+        <a
+          class="work-card"
+          href={work.href}
+          target={work.external ? '_blank' : undefined}
+          rel={work.external ? 'noopener noreferrer' : undefined}
+        >
+          <div class="work-image">
+            <img src={work.image} alt="" loading="lazy" />
           </div>
-        {/if}
-        {#if showBubble && bubbleState === 2}
-          <div class="thought-bubble bubble-top-right">
-            <p>I captured it with my 70-year-old Rolleiflex 6x6 camera. I used Kodak Portra 800 film.</p>
-          </div>
-        {/if}
-        {#if showBubble && bubbleState === 3}
-          <div class="thought-bubble bubble-bottom-left">
-            <p>What a beautiful day it was, and I hope for many more beautiful days like this.</p>
-          </div>
-        {/if}
-      </div>
+          <span class="work-label">{work.label}</span>
+          <h3 class="work-title">{work.title}</h3>
+        </a>
+      {/each}
     </div>
+  </section>
 
-    <!-- 右侧按钮列 -->
-    <div class="nav-col right-col">
-      <div class="nav-dropdown">
-        <button class="nav-block brown-light">VISUAL ARTS</button>
-        <div class="nav-dropdown-content">
-          <a href="{base}/photography">Photography</a>
-          <a href="{base}/documentary">Documentary</a>
-          <a href="{base}/animation">Motion Graphics</a>
-        </div>
-      </div>
+  <section class="block">
+    <div class="block-head-row">
+      <h2 class="block-heading">Latest from the Houston Business Journal</h2>
+      <a class="block-more" href="{base}/writing#hbj">All clips →</a>
     </div>
-  </div>
+    <ul class="clip-rows">
+      {#each recentClips as clip (clip.url)}
+        <li>
+          <a href={clip.url} target="_blank" rel="noopener noreferrer">
+            <span class="clip-date">{formatDate(clip.date)}</span>
+            <span class="clip-title">{clip.title}</span>
+            <span class="clip-arrow">↗</span>
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </section>
 
-  <a href="{base}/about" class="about-link"><h2 class="portfolio-text">PORTFOLIO</h2></a>
-  <a href="{base}/about" class="about-link"><p class="subtitle">Data Journalist · Documentary Producer · Motion Graphics Designer</p></a>
-
-  <SeasonEffect />
-
-</main>
+  <nav class="sections" aria-label="All work">
+    {#each sections as s (s.href)}
+      <a href={s.href}>{s.label}</a>
+    {/each}
+  </nav>
+</div>
 
 <style>
-  .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh; 
-    text-align: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding: 2rem 1rem;
+  .home {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+    font-family: var(--font-body);
   }
 
-  .main-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #000;
+  /* ── intro ── */
+  .intro {
+    margin-bottom: 4rem;
   }
 
-  /* 三列网格布局 */
-  .hero-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 2.5rem;
-  }
-
-  /* 按钮列 */
-  .nav-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  /* 通用按钮块样式 */
-  .nav-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 170px;
-    height: 95px;
-    text-decoration: none;
-    color: #fff;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .nav-block:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
-
-  .grey-light {
-    background-color: #b0b5b9;
-  }
-
-  /* 右侧棕色系 */
-  .brown-light {
-    background-color: #c4a776;
-  }
-
-  /* VISUAL ARTS 下拉菜单 */
-  .nav-dropdown {
-    position: relative;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    min-width: 170px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: 6px;
-    z-index: 50;
-    overflow: hidden;
-  }
-
-  .nav-dropdown-content a {
-    color: #444;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #f5f0e8;
-    color: #7a5c3a;
-  }
-
-  .nav-dropdown:hover .nav-dropdown-content {
-    display: block;
-  }
-
-  /* 照片 */
-  .photo-col {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-  }
-
-  .photo-wrapper {
-    position: relative;
-    display: inline-block;
-  }
-
-  .hero-photo {
-    width: 300px;
-    height: auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    display: block;
-  }
-
-  /* 思考气泡样式 — 毛玻璃柔和风格 */
-  .thought-bubble {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 22px;
-    padding: 18px 22px;
-    max-width: 280px;
-    width: 280px;
-    z-index: 100;
-    animation: bubbleAppear 0.3s ease-out;
-    box-shadow:
-      0 4px 20px rgba(0, 0, 0, 0.06),
-      0 1px 6px rgba(0, 0, 0, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-
-  /* 左上方气泡 */
-  .bubble-top-left {
-    top: -120px;
-    left: -280px;
-  }
-
-  /* 尾部小圆点 — 渐隐效果 */
-  .bubble-top-left::before {
-    content: '';
-    position: absolute;
-    bottom: -16px;
-    right: -14px;
-    width: 20px;
-    height: 20px;
-    background: rgba(235, 235, 235, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  }
-
-  .bubble-top-left::after {
-    content: '';
-    position: absolute;
-    bottom: -28px;
-    right: -26px;
-    width: 12px;
-    height: 12px;
-    background: rgba(230, 230, 230, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  }
-
-  /* 右上方气泡 */
-  .bubble-top-right {
-    top: -120px;
-    right: -280px;
-  }
-
-  .bubble-top-right::before {
-    content: '';
-    position: absolute;
-    bottom: -16px;
-    left: -14px;
-    width: 20px;
-    height: 20px;
-    background: rgba(235, 235, 235, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  }
-
-  .bubble-top-right::after {
-    content: '';
-    position: absolute;
-    bottom: -28px;
-    left: -26px;
-    width: 12px;
-    height: 12px;
-    background: rgba(230, 230, 230, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  }
-
-  /* 左下方气泡 */
-  .bubble-bottom-left {
-    bottom: -120px;
-    left: -280px;
-  }
-
-  .bubble-bottom-left::before {
-    content: '';
-    position: absolute;
-    top: -16px;
-    right: -14px;
-    width: 20px;
-    height: 20px;
-    background: rgba(235, 235, 235, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  }
-
-  .bubble-bottom-left::after {
-    content: '';
-    position: absolute;
-    top: -28px;
-    right: -26px;
-    width: 12px;
-    height: 12px;
-    background: rgba(230, 230, 230, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  }
-
-  .thought-bubble p {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #3a3a3a;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-  }
-
-  @keyframes bubbleAppear {
-    from {
-      opacity: 0;
-      transform: scale(0.85) translateY(4px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
-  /* PORTFOLIO 大字 */
-  .portfolio-text {
-    font-size: 5rem;
+  .name {
+    font-size: 3.5rem;
     font-weight: 900;
-    letter-spacing: 8px;
+    line-height: 1;
+    letter-spacing: 1px;
     color: #000;
-    margin: 1rem 0 0.5rem;
+    margin: 0 0 0.75rem;
   }
 
-  /* 副标题 */
-  .subtitle {
+  .role {
     font-size: 1.3rem;
-    color: #555;
     font-weight: 300;
-    margin-top: 0.5rem;
+    color: #555;
+    margin: 0 0 1.5rem;
   }
 
-  .about-link {
+  .intro-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .intro-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid var(--cuny-orange);
+    padding-bottom: 0.15rem;
+  }
+
+  .intro-links a:hover {
+    color: var(--cuny-orange-ink);
+  }
+
+  /* ── blocks ── */
+  .block {
+    margin-bottom: 4rem;
+  }
+
+  .block-heading {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 1.5rem;
+  }
+
+  .block-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .block-more {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .block-more:hover {
+    color: var(--cuny-orange-ink);
+  }
+
+  /* ── selected work ── */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .work-card {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: inherit;
   }
 
-  .about-link:hover {
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
+  .work-image {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--paper);
+    margin-bottom: 1rem;
   }
 
-  /* 手机适配 */
+  .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .work-card:hover .work-image img {
+    transform: scale(1.03);
+  }
+
+  .work-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--unc-blue-ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .work-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #111;
+    margin: 0;
+  }
+
+
+  .work-card:hover .work-title {
+    color: var(--cuny-orange-ink);
+  }
+
+  /* ── recent clips ── */
+  .clip-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .clip-rows li {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .clip-rows a {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr auto;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .clip-date {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #666;
+    white-space: nowrap;
+  }
+
+  .clip-title {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #222;
+  }
+
+  .clip-arrow {
+    color: #999;
+  }
+
+  .clip-rows a:hover .clip-title,
+  .clip-rows a:hover .clip-arrow {
+    color: var(--cuny-orange-ink);
+  }
+
+  /* ── section links ── */
+  .sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+  }
+
+  .sections a {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    text-decoration: none;
+  }
+
+  .sections a:hover {
+    color: var(--cuny-orange-ink);
+  }
+
+  /* ── responsive ── */
+  @media (max-width: 1000px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
-    .main-title {
-      font-size: 2rem;
+    .home {
+      width: auto;
+      padding: 2.5rem 0 3rem;
     }
 
-    .hero-grid {
+    .name {
+      font-size: 2.5rem;
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .clip-rows a {
+      grid-template-columns: 1fr auto;
+      gap: 0.25rem 1rem;
+    }
+
+    .clip-date {
+      grid-column: 1 / -1;
+    }
+
+    .block-head-row {
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 0;
+      margin-bottom: 1.5rem;
     }
 
-    .nav-col {
-      flex-direction: row;
-      gap: 1rem;
-    }
-
-    .nav-block {
-      width: 130px;
-      height: 70px;
-      font-size: 0.8rem;
-    }
-
-    .hero-photo {
-      width: 250px;
-    }
-
-    .photo-wrapper {
-      overflow: visible;
-    }
-
-    .thought-bubble {
-      max-width: 140px;
-      width: 140px;
-      padding: 12px 14px;
-    }
-
-    .thought-bubble p {
-      font-size: 0.75rem;
-      line-height: 1.3;
-    }
-
-    .bubble-top-left {
-      top: -110px;
-      left: -60px;
-    }
-
-    .bubble-top-left::before {
-      width: 10px;
-      height: 10px;
-      right: -8px;
-      bottom: -8px;
-    }
-
-    .bubble-top-left::after {
-      width: 6px;
-      height: 6px;
-      right: -16px;
-      bottom: -16px;
-    }
-
-    .bubble-top-right {
-      top: -110px;
-      right: -60px;
-    }
-
-    .bubble-top-right::before {
-      width: 10px;
-      height: 10px;
-      left: -8px;
-      bottom: -8px;
-    }
-
-    .bubble-top-right::after {
-      width: 6px;
-      height: 6px;
-      left: -16px;
-      bottom: -16px;
-    }
-
-    .bubble-bottom-left {
-      bottom: -110px;
-      left: -60px;
-    }
-
-    .bubble-bottom-left::before {
-      width: 10px;
-      height: 10px;
-      right: -8px;
-      top: -8px;
-    }
-
-    .bubble-bottom-left::after {
-      width: 6px;
-      height: 6px;
-      right: -16px;
-      top: -16px;
-    }
-
-    .portfolio-text {
-      font-size: 3rem;
+    .block-head-row .block-heading {
+      margin-bottom: 0.25rem;
     }
   }
 </style>

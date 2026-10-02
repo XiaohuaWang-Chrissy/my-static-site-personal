@@ -1,39 +1,27 @@
 <script>
-  import { page } from '$app/stores';
   import { base } from '$app/paths';
+  import { page } from '$app/stores';
+  import '$lib/styles/palette.css';
 
-  let isHome = $derived($page.url.pathname === base + '/' || $page.url.pathname === base || $page.url.pathname === '/');
+  // About 页有落花特效，蓝橙线放在那里太突兀，不显示
+  let isAbout = $derived($page.url.pathname.replace(/\/$/, '') === `${base}/about`);
 </script>
 
-{#if isHome}
-  <!-- 主页只显示简洁的品牌名 -->
-  <nav class="portfolio-nav home-nav">
-    <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
-  </nav>
-{:else}
-  <!-- 其他页面显示完整导航 -->
-  <nav class="portfolio-nav">
-    <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
-    <div class="nav-links">
-      <div class="dropdown">
-        <button class="dropbtn">Writing ▾</button>
-        <div class="dropdown-content">
-          <a href="{base}/data-journalism">Data</a>
-          <a href="{base}/writing">Investigative</a>
-        </div>
+<nav class="portfolio-nav" class:no-stripe={isAbout}>
+  <a href="{base}/" class="nav-brand">Chrissy Wang 小花</a>
+  <div class="nav-links">
+    <a href="{base}/writing">Writing</a>
+    <div class="dropdown">
+      <button class="dropbtn">Visual Arts ▾</button>
+      <div class="dropdown-content">
+        <a href="{base}/photography">Photography</a>
+        <a href="{base}/documentary">Documentary</a>
+        <a href="{base}/animation">Motion Graphics</a>
       </div>
-      <div class="dropdown">
-        <button class="dropbtn">Visual Arts ▾</button>
-        <div class="dropdown-content">
-          <a href="{base}/photography">Photography</a>
-          <a href="{base}/documentary">Documentary</a>
-          <a href="{base}/animation">Motion Graphics</a>
-        </div>
-      </div>
-      <a href="{base}/about">About</a>
     </div>
-  </nav>
-{/if}
+    <a href="{base}/about">About</a>
+  </div>
+</nav>
 
 <main class="content-wrapper">
   <slot />
@@ -46,21 +34,32 @@
     align-items: center;
     padding: 1rem 2rem;
     background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #eaeaea;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     position: sticky;
     top: 0;
     z-index: 100;
   }
 
-  .home-nav {
-    justify-content: flex-start;
+  /* 导航下方的蓝橙双色细线：UNC 蓝 + CUNY 橙 */
+  .portfolio-nav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--unc-blue) 50%, var(--cuny-orange) 50%);
+  }
+
+  .portfolio-nav.no-stripe::after {
+    display: none;
   }
 
   .nav-brand {
-    font-weight: 400;
-    font-size: 1.1rem;
-    letter-spacing: 0.3px;
+    font-family: var(--font-hand);
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
     color: #333;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -85,7 +84,7 @@
   }
 
   .nav-links a:hover {
-    color: #d93025;
+    color: var(--cuny-orange-ink);
   }
 
   /* 下拉菜单 */
@@ -99,14 +98,14 @@
     border: none;
     color: #666;
     font-size: 0.95rem;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     cursor: pointer;
     padding: 0;
     transition: color 0.2s ease;
   }
 
   .dropdown:hover .dropbtn {
-    color: #d93025;
+    color: var(--cuny-orange-ink);
   }
 
   .dropdown-content {
@@ -133,10 +132,11 @@
 
   .dropdown-content a:hover {
     background-color: #f8f9fa;
-    color: #7a5c3a;
+    color: var(--cuny-orange-ink);
   }
 
-  .dropdown:hover .dropdown-content {
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
     display: block;
   }
 
@@ -144,5 +144,30 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
+  }
+
+  /* 手机适配：导航收紧，保证一行放得下 */
+  @media (max-width: 600px) {
+    .portfolio-nav {
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-brand {
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      gap: 14px;
+    }
+
+    .nav-links a,
+    .dropbtn {
+      font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+      left: auto;
+      right: -10px;
+    }
   }
 </style>

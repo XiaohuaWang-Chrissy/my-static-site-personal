@@ -94,7 +94,7 @@
     width: 90%;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
     color: #222;
   }
 
@@ -103,11 +103,11 @@
   }
 
   .article-label {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #c4a776;
+    color: var(--unc-blue-ink);
     text-transform: uppercase;
     margin-bottom: 0.8rem;
   }
@@ -118,11 +118,11 @@
     line-height: 1.25;
     margin: 0 0 1rem;
     color: #111;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .article-byline {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     color: #666;
   }
@@ -151,7 +151,7 @@
   }
 
   blockquote {
-    border-left: 4px solid #c4a776;
+    border-left: 4px solid var(--unc-blue);
     margin: 2rem 0;
     padding: 1rem 1.5rem;
     background: #faf8f5;

@@ -1,0 +1,23 @@
+/* 全站配色和字体：UNC Carolina Blue + CUNY orange；Fraunces + Caveat + Long Cang。
+   在 +layout.svelte 里引入，所有页面和组件都能用这些变量。
+   -ink 是深一点的版本，用在白底上的小字，保证看得清。 */
+:root {
+  --unc-blue: #4b9cd3;
+  --unc-blue-ink: #2a6ea8;
+  --cuny-orange: #f07f22;
+  --cuny-orange-ink: #c2570f;
+  --paper: #f3f7fb; /* 卡片背景，带一点 Carolina Blue */
+  --rule: #e2e9f0;  /* 细线和分隔线 */
+
+  /* 字体：英文用 Fraunces（柔和版），中文（包括名字）用和春夏秋冬一样的 Long Cang */
+  --font-body: 'Fraunces', 'Long Cang', 'Songti SC', Georgia, serif;
+  --font-serif: var(--font-body); /* 日期、斜体说明等，也用 Fraunces */
+  /* 手写体：用在紧挨着中文名字的 "Chrissy Wang"，和 Long Cang 搭配 */
+  --font-hand: 'Caveat', 'Long Cang', cursive;
+}
+
+body {
+  font-family: var(--font-body);
+  /* Fraunces 的柔和、俏皮字形：子元素会继承 */
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+}

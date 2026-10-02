@@ -119,43 +119,25 @@
 
   <aside class="related-section">
     <p class="related-label">RELATED DOCUMENTARY</p>
-    <a href="https://www.pbs.org/video/meet-the-local-heroes-rebuilding-western-nc-after-hurricane-helene-hrkbzz/" target="_blank" rel="noopener" class="related-card">
-      <div class="related-badge">
-        <span class="badge-icon">&#9654;</span>
-        <span class="badge-text">PBS VIDEO</span>
+    <a href="https://www.pbs.org/video/meet-the-local-heroes-rebuilding-western-nc-after-hurricane-helene-hrkbzz/" target="_blank" rel="noopener noreferrer" class="related-card">
+      <div class="related-thumb">
+        <img src="https://image.pbs.org/video-assets/rnKzvAA-asset-mezzanine-16x9-7NK7Iid.jpg?focalcrop=1200x630x50x10&format=auto" alt="Still from My Home, NC" loading="lazy" />
+        <span class="play-button" aria-hidden="true">&#9654;</span>
       </div>
       <div class="related-info">
-        <p class="related-series">Emmy Award–Winning Series</p>
+        <p class="related-series">Emmy Award–winning series on PBS</p>
         <h3 class="related-title">My Home, NC</h3>
         <p class="related-subtitle">Meet the Local Heroes Rebuilding Western NC After Hurricane Helene</p>
-        <div class="related-credits">
-          <div class="credit-row">
-            <span class="credit-role">Director / Producer / DP / Editor</span>
-            <span class="credit-name">Max Feliu</span>
-          </div>
-          <div class="credit-row">
-            <span class="credit-role">Executive Producer</span>
-            <span class="credit-name">Heather Burgiss</span>
-          </div>
-          <div class="credit-row">
-            <span class="credit-role">Series Producers</span>
-            <span class="credit-name">Emily Frachtling, Cliff Bumgardner</span>
-          </div>
-          <div class="credit-row highlight">
-            <span class="credit-role">Contributing Reporters</span>
-            <span class="credit-name">Chrissy Wang, Samantha Hoffman, Olivia Gschwind</span>
-          </div>
-          <div class="credit-row">
-            <span class="credit-role">Archival Footage</span>
-            <span class="credit-name">Food Network, WLOS News 13, Samaritans Purse</span>
-          </div>
-          <div class="credit-row">
-            <span class="credit-role">Produced By</span>
-            <span class="credit-name">UNC Media Hub &amp; Honors Carolina</span>
-          </div>
-        </div>
+        <dl class="related-credits">
+          <dt>Director / Producer / DP / Editor</dt><dd>Max Feliu</dd>
+          <dt>Executive Producer</dt><dd>Heather Burgiss</dd>
+          <dt>Series Producers</dt><dd>Emily Frachtling, Cliff Bumgardner</dd>
+          <dt>Contributing Reporters</dt><dd>Chrissy Wang, Samantha Hoffman, Olivia Gschwind</dd>
+          <dt>Archival Footage</dt><dd>Food Network, WLOS News 13, Samaritans Purse</dd>
+          <dt>Produced By</dt><dd>UNC Media Hub &amp; Honors Carolina</dd>
+        </dl>
+        <span class="watch-link">Watch on PBS ↗</span>
       </div>
-      <span class="related-arrow">&#x2192;</span>
     </a>
   </aside>
 
@@ -198,7 +180,7 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
 
   .gallery-header {
@@ -379,7 +361,7 @@
     text-align: center;
     margin-top: 1.5rem;
     padding: 0 1rem;
-    font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
+    font-family: var(--font-serif);
   }
 
   .lightbox-counter {
@@ -452,14 +434,6 @@
       right: 0.25rem;
     }
 
-    .related-card {
-      flex-direction: column;
-      padding: 1.5rem;
-    }
-
-    .related-arrow {
-      display: none;
-    }
   }
 
   /* ── Related Documentary ── */
@@ -479,135 +453,149 @@
   }
 
   .related-card {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    padding: 1.75rem 2rem;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    background: var(--paper);
     text-decoration: none;
-    color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    color: inherit;
     overflow: hidden;
-    position: relative;
-  }
-
-  .related-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(196,167,118,0.08) 0%, transparent 60%);
-    pointer-events: none;
+    transition: box-shadow 0.3s ease;
   }
 
   .related-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 36px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .related-badge {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  .related-thumb {
+    position: relative;
+    overflow: hidden;
+    background: #222;
+    min-height: 220px;
   }
 
-  .badge-icon {
-    width: 52px;
-    height: 52px;
+  .related-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 15% 30%; /* 把人物留在画面里 */
+    transition: transform 0.4s ease;
+  }
+
+  .related-card:hover .related-thumb img {
+    transform: scale(1.03);
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: rgba(196,167,118,0.2);
-    border: 2px solid rgba(196,167,118,0.5);
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-    color: #c4a776;
+    padding-left: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
   }
 
-  .badge-text {
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: rgba(196,167,118,0.8);
+  .related-card:hover .play-button {
+    transform: translate(-50%, -50%) scale(1.08);
   }
 
   .related-info {
-    flex: 1;
+    padding: 2rem 2.5rem;
     min-width: 0;
   }
 
   .related-series {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 2px;
-    color: #c4a776;
-    margin-bottom: 0.35rem;
+    color: var(--unc-blue-ink);
     text-transform: uppercase;
+    margin-bottom: 0.6rem;
   }
 
   .related-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    line-height: 1.25;
+    color: #111;
     margin-bottom: 0.4rem;
-    color: #fff;
-    line-height: 1.3;
   }
 
   .related-subtitle {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.1rem;
   }
 
   .related-credits {
-    margin-top: 0.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .credit-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    font-size: 0.72rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1.25rem;
+    row-gap: 0.3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 1.25rem;
+    font-size: 0.78rem;
     line-height: 1.5;
   }
 
-  .credit-role {
-    flex-shrink: 0;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.6rem;
-    font-weight: 600;
-    min-width: 140px;
-    text-align: left;
+  .related-credits dt {
+    color: #999;
   }
 
-  .credit-name {
-    color: rgba(255,255,255,0.75);
+  .related-credits dd {
+    margin: 0;
+    color: #444;
+  }
+
+  .watch-link {
+    display: inline-block;
+    font-size: 0.8rem;
     font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #111;
+    border-bottom: 1px solid var(--cuny-orange);
+    padding-bottom: 0.15rem;
   }
 
-  .credit-row.highlight .credit-name {
-    color: #c4a776;
-    font-weight: 600;
+  .related-card:hover .watch-link {
+    color: var(--cuny-orange-ink);
   }
 
-  .related-arrow {
-    flex-shrink: 0;
-    font-size: 1.5rem;
-    color: rgba(196,167,118,0.5);
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
+  @media (max-width: 768px) {
+    .related-card {
+      grid-template-columns: 1fr;
+    }
 
-  .related-card:hover .related-arrow {
-    color: #c4a776;
-    transform: translateX(4px);
+    .related-thumb {
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+    }
+
+    .related-info {
+      padding: 1.5rem 1.5rem 1.75rem;
+    }
+
+    .related-credits {
+      grid-template-columns: 1fr;
+      row-gap: 0;
+    }
+
+    .related-credits dd {
+      margin-bottom: 0.5rem;
+    }
   }
 </style>

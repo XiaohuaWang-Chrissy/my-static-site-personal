@@ -26,7 +26,7 @@ USAGE EXAMPLE:
 
   /* Mobile-first: smaller text */
   .article-body {
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     font-size: var(--font-size-base);
     line-height: 1.75;
     color: var(--color-text);

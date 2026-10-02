@@ -315,7 +315,7 @@ function fmtTooltipDate(dateStr) {
     {/if}
 
     <!-- Brent line -->
-    <path d={smoothPath(brentPts)} fill="none" stroke="#c4a776" stroke-width="2"/>
+    <path d={smoothPath(brentPts)} fill="none" stroke="#f07f22" stroke-width="2"/>
 
     <!-- WTI line -->
     <path d={smoothPath(wtiPts)} fill="none" stroke="#0033A1" stroke-width="2"/>
@@ -354,7 +354,7 @@ function fmtTooltipDate(dateStr) {
       <line x1={hovered.x} x2={hovered.x} y1={M.top} y2={M.top+CH}
         stroke="#aaa" stroke-width="1" stroke-dasharray="3,3"/>
       <circle cx={hovered.x} cy={yScale(hovered.brent)} r="4"
-        fill="#fff" stroke="#c4a776" stroke-width="2"/>
+        fill="#fff" stroke="#f07f22" stroke-width="2"/>
       <circle cx={hovered.x} cy={yScale(hovered.wti)} r="4"
         fill="#fff" stroke="#0033A1" stroke-width="2"/>
 
@@ -367,7 +367,7 @@ function fmtTooltipDate(dateStr) {
       {#if hovered.daily}
         <text x={tx+10} y={M.top+43} class="tt-live">● live</text>
       {/if}
-      <circle cx={tx+14} cy={M.top+54} r="4" fill="#c4a776"/>
+      <circle cx={tx+14} cy={M.top+54} r="4" fill="#f07f22"/>
       <text x={tx+24} y={M.top+58} class="tt-lbl">Brent</text>
       <text x={tx+134} y={M.top+58} class="tt-val" text-anchor="end">{fmtP(hovered.brent)}</text>
       <circle cx={tx+14} cy={M.top+70} r="4" fill="#0033A1"/>
@@ -379,7 +379,7 @@ function fmtTooltipDate(dateStr) {
 
   <!-- Legend + source -->
   <div class="legend">
-    <span class="leg"><svg width="20" height="8"><line x1="0" y1="4" x2="20" y2="4" stroke="#c4a776" stroke-width="2.5"/></svg>Brent (global)</span>
+    <span class="leg"><svg width="20" height="8"><line x1="0" y1="4" x2="20" y2="4" stroke="#f07f22" stroke-width="2.5"/></svg>Brent (global)</span>
     <span class="leg"><svg width="20" height="8"><line x1="0" y1="4" x2="20" y2="4" stroke="#0033A1" stroke-width="2.5"/></svg>WTI (U.S.)</span>
     <span class="leg"><svg width="20" height="8"><rect x="0" y="1" width="20" height="6" fill="rgba(180,158,110,0.25)" rx="1"/></svg>Spread</span>
     {#if !fredApiKey}
@@ -391,7 +391,7 @@ function fmtTooltipDate(dateStr) {
 
 <style>
   .chart-wrap {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     background: #fff;
     border: 1px solid #ebebeb;
     border-radius: 8px;
@@ -458,14 +458,14 @@ function fmtTooltipDate(dateStr) {
     cursor: crosshair;
   }
 
-  .ax       { font-size: 10px; fill: #bbb; font-family: 'Helvetica Neue', sans-serif; }
-  .ev-label { font-size: 9.5px; fill: #aaa; font-family: 'Helvetica Neue', sans-serif; font-weight: 500; }
-  .ev-sub   { font-size: 8.5px; fill: #ccc; font-family: 'Helvetica Neue', sans-serif; }
-  .tt-date  { font-size: 11px; font-weight: 600; fill: #222; font-family: 'Helvetica Neue', sans-serif; }
-  .tt-live  { font-size: 8.5px; fill: #2a7a3b; font-family: 'Helvetica Neue', sans-serif; }
-  .tt-lbl   { font-size: 10.5px; fill: #666; font-family: 'Helvetica Neue', sans-serif; }
-  .tt-val   { font-size: 10.5px; font-weight: 600; fill: #111; font-family: 'Helvetica Neue', sans-serif; }
-  .tt-spread{ font-size: 9.5px; fill: #aaa; font-family: 'Helvetica Neue', sans-serif; }
+  .ax       { font-size: 10px; fill: #bbb; font-family: var(--font-body); }
+  .ev-label { font-size: 9.5px; fill: #aaa; font-family: var(--font-body); font-weight: 500; }
+  .ev-sub   { font-size: 8.5px; fill: #ccc; font-family: var(--font-body); }
+  .tt-date  { font-size: 11px; font-weight: 600; fill: #222; font-family: var(--font-body); }
+  .tt-live  { font-size: 8.5px; fill: #2a7a3b; font-family: var(--font-body); }
+  .tt-lbl   { font-size: 10.5px; fill: #666; font-family: var(--font-body); }
+  .tt-val   { font-size: 10.5px; font-weight: 600; fill: #111; font-family: var(--font-body); }
+  .tt-spread{ font-size: 9.5px; fill: #aaa; font-family: var(--font-body); }
 
   .legend {
     display: flex;

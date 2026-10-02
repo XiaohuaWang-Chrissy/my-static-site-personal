@@ -29,7 +29,7 @@
     padding: 20px;
     margin: 20px 0;
     max-width: 100%;
-    font-family: var(--font-sans, 'Helvetica Neue', sans-serif);
+    font-family: var(--font-body);
   }
   .metric {
     font-size: 2.5rem;
@@ -37,7 +37,7 @@
     margin-bottom: 8px;
   }
   .description {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     color: #444;
     font-size: 1.1rem;
     line-height: 1.4;
