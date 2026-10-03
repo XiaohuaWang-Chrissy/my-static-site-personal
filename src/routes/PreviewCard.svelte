@@ -10,6 +10,7 @@
     date = "",
     description = "",
     byline = "",
+    note = "",
     external = false,
     links = [] // 可选：[{ href, text }]。给了多个链接时，卡片不再整体可点，图片链到第一个
   } = $props();
@@ -29,6 +30,7 @@
       {#if subtitle}<p class="project-subtitle">{subtitle}</p>{/if}
       {#if date}<p class="project-date">{date}</p>{/if}
       {#if description}<p class="project-description">{description}</p>{/if}
+      {#if note}<p class="project-note">{note}</p>{/if}
       <ul class="project-links">
         {#each links as link (link.href)}
           <li><a href={link.href} target="_blank" rel="noopener noreferrer">{link.text} ↗</a></li>
@@ -50,6 +52,7 @@
       {#if subtitle}<p class="project-subtitle">{subtitle}</p>{/if}
       {#if date}<p class="project-date">{date}</p>{/if}
       {#if description}<p class="project-description">{description}</p>{/if}
+      {#if note}<p class="project-note">{note}</p>{/if}
     </div>
   </a>
 {:else}
@@ -66,6 +69,7 @@
       {#if subtitle}<p class="project-subtitle">{subtitle}</p>{/if}
       {#if date}<p class="project-date">{date}</p>{/if}
       {#if description}<p class="project-description">{description}</p>{/if}
+      {#if note}<p class="project-note">{note}</p>{/if}
     </div>
   </a>
 {/if}
@@ -177,6 +181,17 @@
     line-height: 1.7;
     color: #555;
     margin: 0 0 1.2rem;
+  }
+
+  .project-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #888;
+    margin: 0 0 1.2rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #eee;
   }
 
   .project-links {

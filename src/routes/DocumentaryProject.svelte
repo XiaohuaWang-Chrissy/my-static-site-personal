@@ -8,7 +8,10 @@
     imageSrc = "",
     imageAlt = "",
     location = "",
-    videoUrl = ""
+    videoUrl = "",
+    reportUrl = "",
+    reportLabel = "",
+    reportNote = ""
   } = $props();
 </script>
 
@@ -65,6 +68,19 @@
       <p>{line}</p>
     {/each}
   </div>
+
+  <!-- Related report -->
+  {#if reportUrl}
+    <div class="doc-report">
+      <a class="doc-report-link" href={reportUrl} target="_blank" rel="noopener noreferrer">
+        <span class="report-label">{reportLabel || 'Read the full report'}</span>
+        <span class="report-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      {#if reportNote}
+        <p class="report-note">{reportNote}</p>
+      {/if}
+    </div>
+  {/if}
 </section>
 
 <style>
@@ -189,6 +205,49 @@
     line-height: 1.8;
     color: #666;
     margin: 0 0 0.6rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  /* ── Related Report ── */
+  .doc-report {
+    max-width: 640px;
+    margin: 2.5rem auto 0;
+    text-align: center;
+  }
+
+  .doc-report-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border: 1px solid var(--cuny-orange);
+    border-radius: 2px;
+    color: var(--cuny-orange);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .doc-report-link:hover {
+    background: var(--cuny-orange);
+    color: #fff;
+  }
+
+  .report-arrow {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .report-note {
+    margin: 1rem auto 0;
+    max-width: 520px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #999;
     font-family: var(--font-serif);
     font-style: italic;
   }

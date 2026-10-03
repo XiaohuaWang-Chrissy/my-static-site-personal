@@ -20,6 +20,7 @@
     subtitle="The Shape of a Diamond"
     description="In a country where inflation runs faster than time, Marisol Fernández is trying to rebuild herself."
     byline="Directed by Chrissy Wang and Jing Chen · Buenos Aires, Argentina · April 2025"
+    note={"La Forma del Diamante was produced for Almas al Viento, under Economy: Hustles and Survival (Gig Work and Multiple Jobs Now Defining Life in Buenos Aires)."}
   />
 
   <PreviewCard
@@ -32,6 +33,7 @@
     subtitle=""
     description="What does home mean?"
     byline="By Chrissy Wang and Jing Chen · In collaboration with UCA Waves · Funded by Blue Cross and Blue Shield of NC · February 2025"
+    note={"Home, Burma was created as Aim 6 (Video Project) of UCA WAVES’ report “Identifying AAPI Health Priorities in North Carolina,” prepared for the Blue Cross NC Foundation."}
   />
 
   <PreviewCard
@@ -44,6 +46,7 @@
     subtitle=""
     description="Miles Avery, a four-time Olympic coach, is still loving coaching at the age of 64."
     byline="By Chrissy Wang · Fletcher, NC · May 2023"
+    note={"The Dream Gym was produced for Hallowed Hills, the 2023 Carolina Photojournalism Workshop project."}
   />
 </section>
 
