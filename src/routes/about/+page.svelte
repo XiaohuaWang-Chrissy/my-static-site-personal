@@ -40,7 +40,6 @@
     <div class="block">
       <h2 class="section-heading">Connect</h2>
       <div class="text-links stacked">
-        <a href="https://github.com/XiaohuaWang-Chrissy" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/xiaohuawang/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <button class:revealed={showEmail} onclick={() => showEmail = !showEmail}>
           {showEmail ? 'xiaohuaw765@gmail.com' : 'Reveal Email'}

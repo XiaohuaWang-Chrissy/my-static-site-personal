@@ -4,6 +4,22 @@
   let canvas;
   let playing = false;
   let currentSeason = 'spring';
+  let animId = null;
+  let onMM = null;
+  let runToken = 0;
+
+  // Cancel any in-flight animation loop and its listener
+  function stopAnim() {
+    if (animId) { cancelAnimationFrame(animId); animId = null; }
+    if (onMM) { window.removeEventListener('mousemove', onMM); onMM = null; }
+  }
+
+  // Dismiss the overlay (click-to-close)
+  function dismiss() {
+    runToken++;        // invalidate any running loop
+    stopAnim();
+    playing = false;
+  }
 
   // Auto-detect season by month
   function detectSeason() {
@@ -68,9 +84,13 @@
   });
 
   async function play(season) {
+    const myToken = ++runToken;
+    stopAnim();              // stop any previous loop before starting a new one
     currentSeason = season;
     playing = true;
     await tick();
+    // A newer play()/dismiss() superseded us while awaiting, or canvas isn't ready
+    if (myToken !== runToken || !canvas) return;
 
     const ctx = canvas.getContext('2d');
     const W = window.innerWidth;
@@ -84,18 +104,18 @@
     const DURATION = season === 'winter' ? 4400 : 3400;
     const startTime = performance.now();
     const particles = [];
-    let animId, lastSpawn = 0;
+    let lastSpawn = 0;
     const palette = getPalette(season);
 
     // Wind from top-left, summer more vertical
     const BASE_ANGLE = season === 'summer' ? Math.PI * 0.42 : Math.PI * 0.3;
     let mIX = 0, mIY = 0, mMoved = false;
 
-    function onMM(e) {
+    onMM = function(e) {
       mMoved = true;
       mIX = (e.clientX - W/2) / W * 0.6;
       mIY = (e.clientY - H/2) / H * 0.6;
-    }
+    };
     window.addEventListener('mousemove', onMM);
 
     function windAngle() {
@@ -358,6 +378,7 @@
 
     // ── main loop ───────────────────────────────────────────────────
     function draw(now) {
+      if (myToken !== runToken) return;   // a newer run superseded this loop
       const elapsed = now - startTime;
       const t = Math.min(elapsed / DURATION, 1);
 
@@ -448,8 +469,8 @@
       if (t < 1) {
         animId = requestAnimationFrame(draw);
       } else {
+        stopAnim();
         playing = false;
-        window.removeEventListener('mousemove', onMM);
       }
     }
 
@@ -479,7 +500,7 @@
 {#if playing}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div class="effect-overlay" on:click={() => (playing = false)}>
+  <div class="effect-overlay" on:click={dismiss}>
     <canvas bind:this={canvas}></canvas>
   </div>
 {/if}
@@ -490,6 +511,8 @@
     gap: 22px;
     justify-content: center;
     margin-top: 0.8rem;
+    position: relative;
+    z-index: 10000;   /* above the effect overlay so season clicks always register */
   }
 
   .season-btn {
@@ -533,7 +556,7 @@
   }
 
   .season-zh {
-    font-family: 'Long Cang', cursive;
+    font-family: 'Ma Shan Zheng', cursive;
     font-size: 0.9rem;
     color: var(--ring-color);
     line-height: 1;

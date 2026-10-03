@@ -5,16 +5,32 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
 <script>
   import { base } from '$app/paths';
 
-  let bubbleState = $state(0); // 0 = 无，1,2,3 = 下次应该显示的气泡
+  let bubbleState = $state(0); // 0 = 无，1,2,3,4 = 下次应该显示的气泡
   let showBubble = $state(false); // 是否显示气泡
+  let lastTouch = 0; // 记录最近一次触摸，用来忽略触摸产生的"假"鼠标事件
 
-  function handleMouseEnter() {
-    bubbleState = bubbleState === 3 ? 1 : bubbleState + 1;
+  // 切到下一个气泡（电脑和手机共用）
+  function nextBubble() {
+    bubbleState = bubbleState === 4 ? 1 : bubbleState + 1;
     showBubble = true;
   }
 
+  // 电脑：悬停进入
+  function handleMouseEnter() {
+    if (Date.now() - lastTouch < 600) return; // 触摸触发的假事件，忽略
+    nextBubble();
+  }
+
+  // 电脑：悬停离开
   function handleMouseLeave() {
+    if (Date.now() - lastTouch < 600) return;
     showBubble = false;
+  }
+
+  // 手机：每次点照片就切到下一个气泡，不需要先点空白处
+  function handleTouchStart() {
+    lastTouch = Date.now();
+    nextBubble();
   }
 </script>
 
@@ -23,7 +39,8 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
   tabindex="0"
   onmouseenter={handleMouseEnter}
   onmouseleave={handleMouseLeave}
-  onkeydown={(e) => e.key === 'Enter' && handleMouseEnter()}>
+  ontouchstart={handleTouchStart}
+  onkeydown={(e) => e.key === 'Enter' && nextBubble()}>
   <img 
     src="{base}/Chrissy_photo.JPG" 
     alt="Chrissy Wang holding a camera" 
@@ -44,7 +61,16 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
       <p>What a beautiful day it was, and I hope for many more beautiful days like this.</p>
     </div>
   {/if}
+  {#if showBubble && bubbleState === 4}
+    <div class="thought-bubble bubble-bottom-right">
+      <p>Want to say hello? You can connect with me through the ways below!</p>
+    </div>
+  {/if}
 </div>
+
+<p class="hover-hint" class:faded={bubbleState > 0} aria-hidden="true">
+  <span class="hint-text">hover over my photo</span>
+</p>
 
 <style>
   .photo-wrapper {
@@ -181,6 +207,40 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   }
 
+  /* 右下方气泡 */
+  .bubble-bottom-right {
+    bottom: -120px;
+    right: -280px;
+  }
+
+  .bubble-bottom-right::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -14px;
+    width: 20px;
+    height: 20px;
+    background: rgba(235, 235, 235, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .bubble-bottom-right::after {
+    content: '';
+    position: absolute;
+    top: -28px;
+    left: -26px;
+    width: 12px;
+    height: 12px;
+    background: rgba(230, 230, 230, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  }
+
   .thought-bubble p {
     margin: 0;
     font-size: 0.9rem;
@@ -188,6 +248,39 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
     color: #3a3a3a;
     font-weight: 400;
     letter-spacing: 0.2px;
+  }
+
+  /* 悬停提示 — 小巧、柔和，和页面风格一致；悬停过一次后淡出 */
+  .hover-hint {
+    margin-top: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.82rem;
+    letter-spacing: 0.4px;
+    color: #a9a9a9;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    animation: hintFloat 2.8s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hover-hint.faded {
+    opacity: 0;
+  }
+
+  @keyframes hintFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(2px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hover-hint {
+      animation: none;
+    }
   }
 
   @keyframes bubbleAppear {
@@ -277,6 +370,25 @@ PhotoBubbles.svelte — 照片 + 悬停时轮流出现的三个思考气泡（�
       width: 6px;
       height: 6px;
       right: -16px;
+      top: -16px;
+    }
+
+    .bubble-bottom-right {
+      bottom: -110px;
+      right: -60px;
+    }
+
+    .bubble-bottom-right::before {
+      width: 10px;
+      height: 10px;
+      left: -8px;
+      top: -8px;
+    }
+
+    .bubble-bottom-right::after {
+      width: 6px;
+      height: 6px;
+      left: -16px;
       top: -16px;
     }
 
